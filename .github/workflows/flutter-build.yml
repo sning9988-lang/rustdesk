@@ -1,7 +1,19 @@
 name: Build the flutter version of the RustDesk
-
 on:
   workflow_dispatch:
+    inputs:
+      upload-artifact:
+        type: boolean
+        default: true
+        description: "Upload artifacts"
+      upload-tag:
+        type: string
+        default: "nightly"
+        description: "Release tag"
+      publish-update-metadata:
+        type: boolean
+        default: false
+        description: "Publish update metadata"
   workflow_call:
     inputs:
       upload-artifact:
@@ -13,6 +25,7 @@ on:
       publish-update-metadata:
         type: boolean
         default: false
+
 
 # NOTE: F-Droid builder script 'flutter/build_fdroid.sh' reads environment
 # variables from this workflow!
